@@ -1,0 +1,57 @@
+body{
+    position:relative;
+    font-family: serif;
+    font-size: 40px;
+    color: rgb(5, 3, 12);
+    margin: 0;
+    padding: 0;
+}
+body::before{
+    content:"";
+    background-image:url('../image/hill.jpg');
+    background-size:cover;
+    position:absolute;
+    top:0px;
+    right:0px;
+    left:0px;
+    bottom:0px;
+    opacity:0.4;
+    z-index:-1;
+}
+#head{
+    background-color:black;
+    color:white;
+    opacity:0.5;
+}
+body>div{
+    padding:100px;
+}
+#content-style{
+    display:flex;
+}
+img{
+    width:200px;
+    height:200px;
+}
+.div{
+    display:block;
+}
+figcaption{
+    text-align:center;
+}
+.image-display{
+    display:flex;
+}
+.image-display>figcaption{
+    font-size:12px;
+}
+input[type="file"]{
+    margin-left:50px;
+}
+.painting-discription{
+    width:200px;
+    font-size:12px;
+}
+.selected_image{
+    border:6px solid rgb(19, 111, 139);
+}

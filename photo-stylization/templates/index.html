@@ -1,0 +1,63 @@
+<html>
+<head>
+<title>Photo stylization</title> 
+<link rel="stylesheet" href="css/index.css" />   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /*jquery*/
+</script>
+<script type="text/javascript" src="js/function.js"></script>
+</head>
+<body>
+<div id="head">
+    <h1>Photo stylization</h1>
+</div>
+<div id="discription">
+    <h2>What is photo stylization?</h2>
+    <p>Photo stylization provide style option to let photo look more like in some styles. The approach is basd on deep learning. In below also provide traditional way to style image in painting.</p>
+</div>
+<div id ="image">
+    <p>Here the photo would be uploaded for rendering.</p>
+    <h2>Select a file to upload</h2>
+    <form method="post" action="/" enctype="multipart/form-data" name="form" onsubmit="return validateForm()">
+            <p>Select the style that apply on</p>
+            <div class="image-display">
+                <figure>
+                    <img src="image/The_Scream.jpg">
+                    <figcaption class="painting-discription">Edvard Munch, 1893, The Scream, oil, tempera and pastel on cardboard</figcaption>
+                </figure>
+                <figure>
+                    <img src="image/The_Starry_Night.jpg">
+                    <figcaption class="painting-discription">Vincent van Gogh, (1853-1890) The Starry Night, 1889, oil on canvas</figcaption>
+                </figure>
+                <figure>
+                    <img src="image/Udnie.jpg">
+                    <figcaption class="painting-discription">Udnie – (Francis Picabia),oil,Cubism</figcaption>
+                </figure>
+            </div>
+            <p>Upload the photo that need to be render</p>
+            <input id = "content_file" type="file" name="content-file" class="form-control" autocomplete="off" accept="image/*" required>
+            <div class="image-display">
+                <figure>
+                    
+                    <img src="image/blend-apple-orange.jpg">
+                    <figcaption>Photo</figcaption>
+                </figure>
+                <figure>
+                    <img src="image/Udnie.jpg">
+                    <figcaption>Style</figcaption>
+                </figure>
+                
+            </div>
+                
+            </p>
+            <div id="sliderBox">
+                   <label>Style-degree: </label><p><input type="range" id="sliderStyleDregree" min="0" max="10" value="10" class="sliders" /> <span id="style-degree">1</span></p>
+            </div>
+            <input type="hidden" name="style_file" value="" required>
+            <input type="hidden" name="style_degree" value ="1" required>
+        </dl>
+        <input type="submit" value="Submit" class="btn btn-info">
+        <script type="text/javascript" src="js/scripts.js"></script>
+    </form>
+</div>
+</body>
+</html>
