@@ -38,6 +38,8 @@ img{
 }
 figcaption{
     text-align:center;
+    width:200px;
+    font-size:16px;
 }
 .image-display{
     display:flex;
@@ -54,4 +56,16 @@ input[type="file"]{
 }
 .selected_image{
     border:6px solid rgb(19, 111, 139);
+}
+div#sliderBox{
+    width:600px;
+    text-align :center;
+}
+div#submit-div{
+    width:600px;
+    text-align:center;
+}
+input.btn.btn-info{
+    width:200px;
+    height:100px;
 }

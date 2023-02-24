@@ -12,8 +12,19 @@
 </div>
 <div id="discription">
     <h2>What is photo stylization?</h2>
-    <p>Photo stylization provide style option to let photo look more like in some styles. The approach is basd on deep learning. In below also provide traditional way to style image in painting.</p>
+    <p>Photo stylization provide style option to let photo look more like in some styles.</p>
 </div>
+<hr>
+<div id="link">
+    <a href="index.html">Neural stylization</a>
+    <a href="painting.html">Painting stylization</a>
+</div>
+<div>
+    <h2>Neural Stylization</h2>
+<p>Nerual stylization apply nerual network to stylize a photo.</p>
+</div>
+
+<hr>
 <div id ="image">
     <p>Here the photo would be uploaded for rendering.</p>
     <h2>Select a file to upload</h2>
@@ -47,15 +58,17 @@
                 </figure>
                 
             </div>
-                
-            </p>
+            <hr>
+            <p>Here the style degree indicate how much the photo would be stylized. The higher value mean higher degree.</p>
             <div id="sliderBox">
                    <label>Style-degree: </label><p><input type="range" id="sliderStyleDregree" min="0" max="10" value="10" class="sliders" /> <span id="style-degree">1</span></p>
             </div>
             <input type="hidden" name="style_file" value="" required>
             <input type="hidden" name="style_degree" value ="1" required>
-        </dl>
-        <input type="submit" value="Submit" class="btn btn-info">
+            <div id="submit-div">
+                <input type="submit" value="Submit" class="btn btn-info">
+            </div>
+        
         <script type="text/javascript" src="js/scripts.js"></script>
     </form>
 </div>
