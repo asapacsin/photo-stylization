@@ -1,10 +1,9 @@
 <html>
 <head>
 <title>Photo stylization</title> 
-<link rel="stylesheet" href="css/index.css" />   
+<link rel="stylesheet" href="{{url_for('static',filename='styles/index.css')}}" /> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /*jquery*/
 </script>
-<script type="text/javascript" src="js/function.js"></script>
 </head>
 <body>
 <div id="head">
@@ -13,21 +12,29 @@
 <div id="discription">
     <p>The render is done!</p>
 </div>
+<hr>
 <div id ="image">
     <p>Here the photo been uploaded for rendering.</p>
     <div class="image-display">
         <figure>
-            <img src="image/blend-apple-orange.jpg">
+            <a href="{{content}}" download>
+                <img src="{{content}}">
+            </a>
             <figcaption>The photo before rendered</figcaption>
         </figure>
         <figure>
-            <img src="image/Udnie.jpg">
+            <a href="{{style}}" download>
+                <img src="{{style}}">
+            </a>
             <figcaption>The style apply</figcaption>
         </figure>
     </div>
+    <hr>
     <div id="output-image">
         <figure>
-            <img src="image/blend-apple-orange_Udnie.jpg">
+            <a href="{{output}}" download>
+                <img src="{{output}}">
+            </a>
             <figcaption>The stylized image</figcaption>
         </figure>
     </div>

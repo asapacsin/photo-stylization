@@ -1,0 +1,65 @@
+<html>
+<head>
+<title>Photo stylization</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+<link rel="stylesheet" href="{{url_for('static',filename='styles/index.css')}}" />  
+<link rel="stylesheet" href="{{url_for('static',filename='styles/painting.css')}}" />  
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /*jquery*/
+</script>
+<script type="text/javascript" src="{{url_for('static',filename='js/function.js')}}"></script>
+</head>
+<body>
+<div id="head">
+    <h1>Photo stylization</h1>
+</div>
+<div id="discription">
+    <h2>What is photo stylization?</h2>
+    <p>Photo stylization provide style option to let photo look more like in some styles.</p>
+</div>
+<hr>
+<div id="link">
+    <a href="">Neural stylization</a>
+    <a href="">Painting stylization</a>
+</div>
+<div>
+    <h2>Painting stylization</h2>
+<p>Painter stylization apply color split to stylize a photo.</p>
+</div>
+
+<hr>
+<div id ="image">
+    <p>Here the photo would be uploaded for rendering.</p>
+    <h2>Select a file to upload</h2>
+    <form method="post" action="/" enctype="multipart/form-data" name="form" onsubmit="return validateForm()">
+            <p>Upload the photo that need to be render</p>
+            <input id = "content_file" type="file" name="content-file" class="form-control" autocomplete="off" accept="image/*" required>
+            <div class="image-display">
+                <figure>
+                    <img id ="display-image-content">
+                    <figcaption>Photo</figcaption>
+                </figure>
+                
+            </div>
+            <hr>
+            <div id="select-split">
+                <p>Here to select how many color need to be divide in. Lower value indicate higher degree of painting style.</p>
+                <select>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+            <input type="hidden" name="number_split" value="3" required>
+            <div id="submit-div">
+                <input type="submit" value="Submit" class="btn btn-info">
+            </div>
+        
+        <script type="text/javascript" src="{{url_for('static',filename='js/scripts_painting.js')}}"></script>
+    </form>
+</div>
+</body>
+</html>

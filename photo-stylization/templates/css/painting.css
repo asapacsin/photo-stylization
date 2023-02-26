@@ -1,0 +1,12 @@
+div#select-split{
+    text-align:center;
+}
+div#submit-div{
+    text-align:center;
+    margin:20px;
+    width:auto;
+}
+input.btn.btn-info{
+    width:auto;
+    height:auto;
+}

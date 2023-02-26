@@ -1,43 +1,77 @@
 <html>
 <head>
 <title>Photo stylization</title> 
-<link rel="stylesheet" href="css/index.css" />   
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+<link rel="stylesheet" href="{{url_for('static',filename='styles/index.css')}}" />   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /*jquery*/
+</script>
+<script type="text/javascript" src="{{url_for('static',filename='js/function.js')}}"></script>
 </head>
 <body>
 <div id="head">
     <h1>Photo stylization</h1>
 </div>
+<div id="discription">
+    <h2>What is photo stylization?</h2>
+    <p>Photo stylization provide style option to let photo look more like in some styles.</p>
+</div>
+<hr>
+<div id="link">
+    <a href="">Neural stylization</a>
+    <a href="">Painting stylization</a>
+</div>
+<div>
+    <h2>Neural Stylization</h2>
+<p>Nerual stylization apply nerual network to stylize a photo.</p>
+</div>
 
-<div class="container">
-<div class="row">
+<hr>
+<div id ="image">
+    <p>Here the photo would be uploaded for rendering.</p>
     <h2>Select a file to upload</h2>
     <form method="post" action="/" enctype="multipart/form-data" name="form" onsubmit="return validateForm()">
+            <p>Select the style that apply on</p>
+            <div class="image-display">
+                <figure>
+                    <img class ='select-style' src="{{url_for('static',filename='uploads/style/The_Scream.jpg')}}">
+                    <figcaption class="painting-discription">Edvard Munch, 1893, The Scream, oil, tempera and pastel on cardboard</figcaption>
+                </figure>
+                <figure>
+                    <img class ='select-style' src="{{url_for('static',filename='uploads/style/The_Starry_Night.jpg')}}">
+                    <figcaption class="painting-discription">Vincent van Gogh, (1853-1890) The Starry Night, 1889, oil on canvas</figcaption>
+                </figure>
+                <figure>
+                    <img class ='select-style' src="{{url_for('static',filename='uploads/style/Udnie.jpg')}}">
+                    <figcaption class="painting-discription">Udnie – (Francis Picabia),oil,Cubism</figcaption>
+                </figure>
+            </div>
+            <p>Upload the photo that need to be render</p>
             <input id = "content_file" type="file" name="content-file" class="form-control" autocomplete="off" accept="image/*" required>
-            <img id ="display-image-content">
-                style-file
-                <div id="image-display">
-                    
-                    <figure>
-                        <img src="image/The_Scream.jpg">
-                        <figcaption>Edvard Munch, 1893, The Scream, oil, tempera and pastel on cardboard</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="image/The_Starry_Night.jpg">
-                        <figcaption>Vincent van Gogh, (1853-1890) The Starry Night, 1889, oil on canvas</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="image/Udnie.jpg">
-                        <figcaption>Udnie – (Francis Picabia),oil,Cubism</figcaption>
-                    </figure>
-                </div>
-            </p>
+            <div class="image-display">
+                <figure>
+                    <img id ="display-image-content">
+                    <figcaption>Photo</figcaption>
+                </figure>
+                <figure hidden id="hidden-style">
+                    <img src="{{url_for('static',filename='uploads/style/Udnie.jpg')}}">
+                    <figcaption>Style</figcaption>
+                </figure>
+                
+            </div>
+            <hr>
+            <p>Here the style degree indicate how much the photo would be stylized. The higher value mean higher degree.</p>
             <div id="sliderBox">
                    <label>Style-degree: </label><p><input type="range" id="sliderStyleDregree" min="0" max="10" value="10" class="sliders" /> <span id="style-degree">1</span></p>
             </div>
             <input type="hidden" name="style_file" value="" required>
             <input type="hidden" name="style_degree" value ="1" required>
-        </dl>
-        <input type="submit" value="Submit" class="btn btn-info">
+            <div id="submit-div">
+                <input type="submit" value="Submit" class="btn btn-info">
+            </div>
+            <div id="print">
+                <p></p>
+            </div>
+        <script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script>
     </form>
 </div>
 </body>

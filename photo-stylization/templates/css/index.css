@@ -69,3 +69,15 @@ input.btn.btn-info{
     width:200px;
     height:100px;
 }
+a{
+    color:blue;
+}
+a:hover{
+    background-color:yellow;
+}
+input#content_file{
+    width:400px;
+}
+img{
+    background-size:cover;
+}
