@@ -1,0 +1,92 @@
+<html>
+<head>
+<title>Photo stylization</title> 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" /> 
+<link rel="stylesheet" href="{{url_for('static',filename='styles/index.css')}}" />   
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /*jquery*/
+</script>
+<script type="text/javascript" src="{{url_for('static',filename='js/function.js')}}"></script>
+</head>
+
+<div id ="image">
+    <form method="post" action="/" enctype="multipart/form-data" name="form" onsubmit="return validateForm()">
+        <p id = "if_style" hidden >{{is_style}}</p>
+        <p id = "if_style" hidden>{{is_painting}}</p>
+        <p id = "degree" hidden>{{degree}}</p>
+        <div id="block1">
+            <div class="image-display">
+                <figure>
+                    <img class ='select-style' src="{{url_for('static',filename='uploads/style/The_Scream.jpg')}}">
+                    <figcaption class="painting-discription">Edvard Munch, 1893, The Scream, oil, tempera and pastel on cardboard</figcaption>
+                </figure>
+                <figure>
+                    <img class ='select-style' src="{{url_for('static',filename='uploads/style/The_Starry_Night.jpg')}}">
+                    <figcaption class="painting-discription">Vincent van Gogh, (1853-1890) The Starry Night, 1889, oil on canvas</figcaption>
+                </figure>
+                <figure>
+                    <img class ='select-style' src="{{url_for('static',filename='uploads/style/Udnie.jpg')}}">
+                    <figcaption class="painting-discription">Udnie – (Francis Picabia),oil,Cubism</figcaption>
+                </figure>
+            </div>
+            <div id="display-content">
+                <input id = "content_file" type="file" name="content_file" class="form-control" autocomplete="off" accept="image/*" >
+                <div class="image-display">
+                    <figure>
+                        <img id ="display-image-content" style="background-image:url({{style_photo}})" >
+                        <figcaption>Photo</figcaption>
+                    </figure>
+                    <figure  id="hidden-style">
+                        <img src="{{style}}">
+                        <figcaption>Style</figcaption>
+                    </figure>
+                    <figure id="display-style-result" hidden>
+                        <a href="{{style_output}}" download>
+                            <img src="{{style_output}}">
+                        </a>
+                        <figcaption>The stylized image with degree {{degree}}</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </div>
+        <div id="sliderBox">
+            <label>Style-degree: </label><p><input type="range" id="sliderStyleDregree" min="0" max="10" value="10" class="sliders" /> <span id="style-degree">1</span></p>
+        </div>
+        <input type="hidden" name="style_file" value="" >
+        <input type="hidden" name="style_degree" value ="1">
+        <div id="submit-div">
+            <input type="submit" value="Submit" class="btn btn-info">
+        </div>
+        <div id="painting">
+            <input id = "painting_content_file" type="file" name="painting_content_file" class="form-control" autocomplete="off" accept="image/*">
+            <figure>
+                <img id ="display-painting-content" style="background-image:url({{painting_photo}})">
+                <figcaption>Photo</figcaption>
+            </figure>
+            <div id="split">
+                <select>
+                    <option>none</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                </select>
+            </div>
+            <div id="display-painting-result" hidden>
+                <figure>
+                    <a href="{{painting_output}}" download>
+                        <img src="{{painting_output}}">
+                    </a>
+                    <figcaption>The stylized photo with time splits {{number_split}}</figcaption>
+                </figure>
+            </div>
+        </div>
+        
+        <input type="hidden" name="number_split" value="none">
+        <script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+body{
+    position:relative;
+    font-family: serif;
+    font-size: 40px;
+    color: rgb(5, 3, 12);
+    margin: 0;
+    padding: 0;
+}
+body::before{
+    content:"";
+    background-image:url('/static/uploads/background/black.jpg');
+    background-size:cover;
+    position:absolute;
+    top:0px;
+    right:0px;
+    left:0px;
+    bottom:0px;
+    opacity:0.4;
+    z-index:-1;
+}
+#head{
+    background-color:black;
+    color:white;
+    opacity:0.5;
+}
+body>div{
+    padding:100px;
+}
+#content-style{
+    display:flex;
+}
+img{
+    width:200px;
+    height:200px;
+}
+.div{
+    display:block;
+}
+figcaption{
+    text-align:center;
+    width:200px;
+    font-size:16px;
+}
+.image-display{
+    display:flex;
+}
+.image-display>figcaption{
+    font-size:12px;
+}
+.painting-discription{
+    width:200px;
+    font-size:12px;
+}
+.selected_image{
+    border:6px solid rgb(19, 111, 139);
+}
+div#sliderBox{
+    width:600px;
+    text-align :center;
+}
+div#submit-div{
+    width:600px;
+    text-align:center;
+}
+input.btn.btn-info{
+    width:200px;
+    height:100px;
+}
+a{
+    color:blue;
+}
+a:hover{
+    background-color:yellow;
+}
+input#content_file{
+    width:400px;
+}
+img{
+    background-size:cover;
+}
+#display{
+    display:flex;
+}
+#painting{
+    position:absolute;
+    left:800px;
+    top:100px;
+}
+
+input#painting_content_file{
+    width:200px;
+}
+select{
+    font-size:20px;
+}

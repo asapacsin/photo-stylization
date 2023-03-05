@@ -1,0 +1,44 @@
+<html>
+<head>
+<title>Photo stylization</title> 
+<link rel="stylesheet" href="{{url_for('static',filename='styles/index.css')}}" /> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"> /*jquery*/
+</script>
+</head>
+<body>
+<div id="head">
+    <h1>Photo stylization</h1>
+</div>
+<div id="discription">
+    <p>The render is done!</p>
+</div>
+<hr>
+<div id ="image">
+    <p>Here the photo been uploaded for rendering.</p>
+    <div class="image-display">
+        <figure>
+            <a href="{{content}}" download>
+                <img src="{{content}}">
+            </a>
+            <figcaption>The photo before rendered</figcaption>
+        </figure>
+        <figure>
+            <a href="{{style}}" download>
+                <img src="{{style}}">
+            </a>
+            <figcaption>The style apply</figcaption>
+        </figure>
+    </div>
+    <hr>
+    <div id="output-image">
+        <figure>
+            <a href="{{output}}" download>
+                <img src="{{output}}">
+            </a>
+            <figcaption>The stylized image</figcaption>
+        </figure>
+    </div>
+    
+</div>
+</body>
+</html>
