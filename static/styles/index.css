@@ -93,3 +93,21 @@ input#painting_content_file{
 select{
     font-size:20px;
 }
+img:hover{
+    opacity:0.8;
+    z-index:1;
+}
+#style_description{
+    position:absolute;
+    left: 750px;
+    top:100px;
+    width:200px;
+}
+p{
+    font-size:29px;
+}
+#painting_description{
+    position:absolute;
+    left:400px;
+    top:0px;
+}

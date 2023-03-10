@@ -33,8 +33,8 @@ def home():
 
 @app.route('/', methods=['POST'])
 def upload_image():
-    is_style = 'no'
-    is_painting = 'no'
+    if_style = 'no'
+    if_painting = 'no'
     content_path =''
     style_path=''
     output_path=''
@@ -71,33 +71,31 @@ def upload_image():
             flash('Image successfully uploaded and displayed below')
         content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ filename_content
         style_path = app.config['UPLOAD_FOLDER_style'] +'/' + style_pure_name +'.jpg'
-        is_style = 'yes'
+        if_style = 'yes'
 
     #painting part
     if 'painting_content_file' in request.files:
         print('hold1')
         sign_painting= True
-        content_file = request.files['painting_content_file']
+        painting_content_file = request.files['painting_content_file']
     #number_split = request.form.get('number_split')
     #print(number_split)
-    if sign_painting and allowed_file(content_file):
+    if sign_painting and allowed_file(painting_content_file):
         print('hold2')
-        filename_content = secure_filename(content_file.filename)
+        filename_content = secure_filename(painting_content_file.filename)
         content_pure_name = filename_content.split('.')[0]
         number_split = request.form.get('number_split')
         painting_output_path = 'static/uploads/painting/' + content_pure_name+'_'+number_split+'splits.jpg'
-        exist_flag = False
         painting_content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ filename_content
         try:
             open(painting_output_path,'rb')
-            exist_flag =True
         except:
-            content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], filename_content))
+            painting_content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], filename_content))
             #print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed below')
-            ps.split(content_path,number_split,content_pure_name)
+            ps.split(painting_content_path,number_split,content_pure_name)
             
-        is_painting = 'yes'
+        if_painting = 'yes'
 
 
     params = {
@@ -106,8 +104,8 @@ def upload_image():
         'style_output' : output_path,
         'painting_photo':painting_content_path,
         'painting_output':painting_output_path,
-        'is_style':is_style,
-        'is_painting':is_painting,
+        'if_style':if_style,
+        'if_painting':if_painting,
         'number_split':number_split,
         'degree':style_degree
     }

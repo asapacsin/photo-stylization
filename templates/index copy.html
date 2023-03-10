@@ -10,8 +10,8 @@
 
 <div id ="image">
     <form method="post" action="/" enctype="multipart/form-data" name="form" onsubmit="return validateForm()">
-        <p id = "if_style" hidden >{{if_style}}</p>
-        <p id = "if_painting" hidden>{{if_painting}}</p>
+        <p id = "if_style" hidden >{{is_style}}</p>
+        <p id = "if_style" hidden>{{is_painting}}</p>
         <p id = "degree" hidden>{{degree}}</p>
         <div id="block1">
             <div class="image-display">
@@ -36,12 +36,12 @@
                         <figcaption>Photo</figcaption>
                     </figure>
                     <figure  id="hidden-style">
-                        <img src="{{style}}"> 
+                        <img style="background-image:url({{style}})">
                         <figcaption>Style</figcaption>
                     </figure>
                     <figure id="display-style-result" hidden>
                         <a href="{{style_output}}" download>
-                            <img style="background-image:url({{style_output}})">
+                            <img src="{{style_output}}">
                         </a>
                         <figcaption>The stylized image with degree {{degree}}</figcaption>
                     </figure>
@@ -55,11 +55,6 @@
         <input type="hidden" name="style_degree" value ="1">
         <div id="submit-div">
             <input type="submit" value="Submit" class="btn btn-info">
-        </div>
-        <div id="style_description">
-            <p>
-                In left is the photo stylization by pretrain neural network.
-            </p>
         </div>
         <div id="painting">
             <input id = "painting_content_file" type="file" name="painting_content_file" class="form-control" autocomplete="off" accept="image/*">
@@ -81,17 +76,14 @@
             </div>
             <div id="display-painting-result" hidden>
                 <figure>
-                    <a href="{{painting_output}}"download>
+                    <a href="{{painting_output}}" download>
                         <img  style="background-image:url({{painting_output}})">
                     </a>
                     <figcaption>The stylized photo with time splits {{number_split}}</figcaption>
                 </figure>
             </div>
         </div>
-        <div id="painting_description">
-            <p>
-                In left is the painting stylization by color segmentation.
-            </p>
+        
         <input type="hidden" name="number_split" value="none">
         <script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script>
     </form>
