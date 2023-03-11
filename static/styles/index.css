@@ -61,6 +61,8 @@ div#sliderBox{
 div#submit-div{
     width:600px;
     text-align:center;
+    position:absolute;
+    left:600px;
 }
 input.btn.btn-info{
     width:200px;
@@ -90,6 +92,12 @@ img{
 input#painting_content_file{
     width:200px;
 }
+input#simple_content_file{
+    width:200px;
+}
+input#simple_style_file{
+    width:200px;
+}
 select{
     font-size:20px;
 }
@@ -106,8 +114,25 @@ img:hover{
 p{
     font-size:29px;
 }
+#painting{
+    position:absolute;
+    left:1000px;
+    top:100px;
+}
 #painting_description{
     position:absolute;
-    left:400px;
-    top:0px;
+    left:1250px;
+    top:100px;
+    width:100px;
+}
+div#simple_stylization{
+    position:absolute;
+    left:1450px;
+    top:100px;
+}
+div#simple_description{
+    position:absolute;
+    left:1700px;
+    top:100px;
+    width:100px;
 }

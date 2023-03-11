@@ -12,6 +12,7 @@
     <form method="post" action="/" enctype="multipart/form-data" name="form" onsubmit="return validateForm()">
         <p id = "if_style" hidden >{{if_style}}</p>
         <p id = "if_painting" hidden>{{if_painting}}</p>
+        <p id = "if_simple" hidden>{{if_simple}}</p>
         <p id = "degree" hidden>{{degree}}</p>
         <div id="block1">
             <div class="image-display">
@@ -92,6 +93,30 @@
             <p>
                 In left is the painting stylization by color segmentation.
             </p>
+        </div>
+        <div id="simple_stylization">
+            <input id = "simple_content_file" type="file" name="simple_content_file" class="form-control" autocomplete="off" accept="image/*">
+            <figure>
+                <img id ="display-simple-content" style="background-image:url({{simple_photo}})">
+                <figcaption>Photo</figcaption>
+            </figure>
+            <input id = "simple_style_file" type="file" name="simple_style_file" class="form-control" autocomplete="off" accept="image/*">
+            <figure>
+                <img id ="display-simple-style" style="background-image:url({{simple_style}})">
+                <figcaption>Style</figcaption>
+            </figure>
+            <div id="display-simple-result" hidden>
+                <figure>
+                    <a href="output/AntikeGriechen1_Udnie.jpg" download>
+                        <img style="background-image:url({{simple_output}})">
+                    </a>
+                    <figcaption>The simple stylization photo</figcaption>
+                </figure>
+            </div>
+        </div>
+        <div id="simple_description">
+            <p>In left is the simple stylization</p>
+        </div>
         <input type="hidden" name="number_split" value="none">
         <script type="text/javascript" src="{{url_for('static',filename='js/scripts.js')}}"></script>
     </form>

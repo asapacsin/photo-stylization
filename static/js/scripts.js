@@ -32,6 +32,30 @@ image_input.addEventListener("change", function() {
 });
 
 
+const simple_input = document.querySelector('#simple_content_file');
+var simple_uploaded_image = "";
+
+simple_input.addEventListener("change",function() {
+  const simple_reader = new FileReader();
+  simple_reader.addEventListener("load",() => {
+    simple_uploaded_image = simple_reader.result;
+    document.querySelector("#display-simple-content").style.backgroundImage=`url(${simple_uploaded_image})`;
+  });
+  simple_reader.readAsDataURL(this.files[0]);
+})
+
+const simple_style_input = document.querySelector('#simple_style_file');
+var simple_style_image = "";
+
+simple_style_input.addEventListener("change",function() {
+  const simple_style_reader = new FileReader();
+  simple_style_reader.addEventListener("load",() => {
+    simple_style_image = simple_style_reader.result;
+    document.querySelector("#display-simple-style").style.backgroundImage=`url(${simple_style_image})`;
+  });
+  simple_style_reader.readAsDataURL(this.files[0]);
+})
+
 const painting_input = document.querySelector("#painting_content_file");
 painting_input.addEventListener("change", function() {
   const painting_reader = new FileReader();
@@ -52,7 +76,12 @@ const is_painting = document.querySelector("#if_style").innerHTML;
 if (is_style == "yes"){
     document.querySelector("#display-painting-result").removeAttribute("hidden");
 }
-          
+   
+const is_simple = document.querySelector("#if_simple").innerHTML;
+if (is_simple == "yes"){
+    document.querySelector("#display-simple-result").removeAttribute("hidden");
+}
+
 var list = document.querySelector('select');
   list.addEventListener("change",event => {
   document.querySelector("input[name='number_split']").value = event.target.value;
