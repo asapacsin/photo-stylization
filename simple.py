@@ -8,8 +8,8 @@ from numpy import asarray
 width=200
 height=200
 epochs = 101
-variation_weight = 1e5
-style_weight = 10
+variation_weight = 1e-1
+style_weight = 1
 content_weight = 1
 style_layers = ['block1_conv1','block2_conv1','block3_conv1','block4_conv1','block5_conv1']
 content_layers = ['block5_conv2']
