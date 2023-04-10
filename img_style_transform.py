@@ -3,12 +3,16 @@ import cv2
 import tensorflow as tf
 import os
 from collect_fea_style import img_preprocessing,run_style_predict
+import time
 
 # 风格特征提取模型
 file_model_prediction = "model/magenta_arbitrary-image-stylization-v1-256_int8_prediction_1.tflite"
 # 风格转换模型
 file_model_transfer = "model/magenta_arbitrary-image-stylization-v1-256_int8_transfer_1.tflite"
 # 进行风格转换 输入风格矢量 、 风格转换模型 、    
+
+width = 200
+height = 200
 
 def run_style_transform(file_model_transfer,style_bottleneck, content_image):
     im_H,im_W,_ = np.shape(content_image)
@@ -58,9 +62,8 @@ def img_style_transform(content_path,content_image_name,style_image_name,style_d
     # 读取原始图像
     img = cv2.imread(content_path)
     # 获取图像帧的尺寸
-    imH,imW,_ = np.shape(img)
     # 适当缩放
-    img = cv2.resize(img,(int(imW*0.8),int(imH*0.8)))
+    img = cv2.resize(img,(width,height))
     #cv2.imshow("img",img)
     
     # 获取内容图像的风格特征
@@ -71,7 +74,12 @@ def img_style_transform(content_path,content_image_name,style_image_name,style_d
     mix_fea = ratio*0.01*style_fea +(1-ratio*0.01)*content_fea
     
     print("start processing Style=%s ratio=%d%%"%(str_style,ratio))
+    #get the start time
+    start = time.time()
     stylized_image = run_style_transform(file_model_transfer,mix_fea, img)
+    #get the comsume time and print
+    end = time.time()
+    print("time comsume: %f s"%(end-start))
     print("processing end")
     #cv2.putText(stylized_image,'Style: %s ratio:%d'%(str_style,ratio),
                                  #(5,30),cv2.FONT_HERSHEY_SIMPLEX, 
