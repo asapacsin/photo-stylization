@@ -49,8 +49,10 @@ def upload_image():
     simple_output_path=''
     #style part
     sign_style = False
+    sign_simple = False
     sign_painting = False
     style_path = request.form.get('style_file') 
+    simple_style_path = request.form.get('simple_style_file')
     if 'content_file' in request.files and style_path != '':
         sign_style = True
         content_file = request.files['content_file']
@@ -68,13 +70,13 @@ def upload_image():
         try:
             open(output_path,'rb')
         except:
-            content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], filename_content))
+            content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], content_pure_name+'.jpg'))
             cfs.style_model_train(style_pure_name)
-            content_path ='static/uploads/content/'+filename_content
+            content_path ='static/uploads/content/'+content_pure_name+'.jpg'
             ist.img_style_transform(content_path,content_pure_name,style_pure_name,style_degree)
             #print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed below')
-        content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ filename_content
+        content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ content_pure_name + '.jpg'
         style_path = app.config['UPLOAD_FOLDER_style'] +'/' + style_pure_name +'.jpg'
         if_style = 'yes'
 
@@ -91,44 +93,21 @@ def upload_image():
         content_pure_name = filename_content.split('.')[0]
         number_split = request.form.get('number_split')
         painting_output_path = 'static/uploads/painting/' + content_pure_name+'_'+number_split+'splits.jpg'
-        painting_content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ filename_content
+        painting_content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ content_pure_name+'.jpg'
+        try:
+            open(painting_content_path,'rb')
+        except:
+            painting_content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], content_pure_name+'.jpg'))
+        
         try:
             open(painting_output_path,'rb')
         except:
-            painting_content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], filename_content))
             #print('upload_image filename: ' + filename)
-            flash('Image successfully uploaded and displayed below')
             ps.split(painting_content_path,number_split,content_pure_name)
             
         if_painting = 'yes'
+
     #make the simple stylization
-    if 'content_file' in request.files and style_path != '':
-        sign_style = True
-        content_file = request.files['content_file']
-    #number_split = request.form.get('number_split')
-    #print(number_split)
-    if sign_style and allowed_file(content_file):
-        style_degree= request.form.get('style_degree')
-        style_degree = float(style_degree)
-        print(style_degree)
-        filename_content = secure_filename(content_file.filename)
-        content_pure_name = filename_content.split('.')[0]
-        style_pure_name  = style_path.split('/')[-1]
-        style_pure_name = style_pure_name.split('.')[0]
-        os.makedirs('static/uploads/simple', exist_ok=True)
-        output_path = 'static/uploads/simple/' +'simple_'+ content_pure_name+'_'+style_pure_name +'.jpg'
-        try:
-            open(output_path,'rb')
-        except:
-            content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], filename_content))
-            cfs.style_model_train(style_pure_name)
-            content_path ='static/uploads/content/'+filename_content
-            ist.img_style_transform(content_path,content_pure_name,style_pure_name,style_degree)
-            #print('upload_image filename: ' + filename)
-            flash('Image successfully uploaded and displayed below')
-        content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ filename_content
-        style_path = app.config['UPLOAD_FOLDER_style'] +'/' + style_pure_name +'.jpg'
-        if_style = 'yes'
 
     sign_simple_content = False
     sign_simple_style = False
@@ -149,14 +128,15 @@ def upload_image():
         simple_style_path = app.config['UPLOAD_FOLDER_style']+ '/'+ filename_style
         simple_content_pure_name = filename_content.split('.')[0]
         simple_style_pure_name = filename_style.split('.')[0]
+        simple_content_path = app.config['UPLOAD_FOLDER_content']+ '/'+ simple_content_pure_name+'.jpg'
+        simple_style_path = app.config['UPLOAD_FOLDER_style']+ '/'+ simple_style_pure_name+'.jpg'
         os.makedirs('static/uploads/simple', exist_ok=True)
         simple_output_path = 'static/uploads/simple/' + simple_content_pure_name+'_'+simple_style_pure_name +'.jpg'
         try:
             open(simple_output_path,'rb')
         except:
-            simple_content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], filename_content))
-            simple_style_file.save(os.path.join(app.config['UPLOAD_FOLDER_style'], filename_style))
-            
+            simple_content_file.save(os.path.join(app.config['UPLOAD_FOLDER_content'], simple_content_pure_name+'.jpg'))
+            simple_style_file.save(os.path.join(app.config['UPLOAD_FOLDER_style'], simple_style_pure_name+'.jpg'))
             simple.style(simple_content_path,simple_style_path,simple_output_path)
             #print('upload_image filename: ' + filename)
             flash('Image successfully uploaded and displayed below')
