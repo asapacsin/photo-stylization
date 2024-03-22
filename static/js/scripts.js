@@ -72,8 +72,8 @@ if (is_style == "yes"){
     document.querySelector("#display-style-result").removeAttribute("hidden");
 }
                 
-const is_painting = document.querySelector("#if_style").innerHTML;
-if (is_style == "yes"){
+const is_painting = document.querySelector("#if_painting").innerHTML;
+if (is_painting == "yes"){
     document.querySelector("#display-painting-result").removeAttribute("hidden");
 }
    

@@ -5,6 +5,7 @@ body{
     color: rgb(5, 3, 12);
     margin: 0;
     padding: 0;
+    width:1920px;
 }
 body::before{
     content:"";

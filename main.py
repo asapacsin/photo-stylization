@@ -108,7 +108,7 @@ def upload_image():
         if_painting = 'yes'
 
     #make the simple stylization
-
+    print('start simple style')
     sign_simple_content = False
     sign_simple_style = False
     if 'simple_content_file' in request.files:

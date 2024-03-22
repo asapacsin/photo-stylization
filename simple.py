@@ -105,6 +105,7 @@ def style(content_path,style_path,output_path):
             
     get_img = tf.squeeze(output_image)
     get_img = Image.fromarray(numpy.uint8(get_img.numpy()*255))
+    print(output_path)
     get_img.save(output_path)
     
     end_time = time.time()
